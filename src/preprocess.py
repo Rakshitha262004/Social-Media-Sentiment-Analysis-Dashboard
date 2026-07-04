@@ -66,6 +66,8 @@ def run_preprocessing(
 ):
     print("📂 Loading raw dataset …")
     df = pd.read_csv(raw_path)
+    if "text" not in df.columns:
+        raise ValueError("Input CSV must include a text column.")
     print(f"   Rows loaded: {len(df)}")
     print("🧹 Cleaning text …")
     df["cleaned_text"] = df["text"].apply(clean_text)

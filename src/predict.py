@@ -3,13 +3,15 @@
 # Purpose: Load saved model and predict sentiment for new text.
 # ============================================================
 
-import os
 import pickle
+from pathlib import Path
+
 from src.preprocess import full_preprocess
 
-MODEL_PATH = os.path.join("models", "sentiment_model.pkl")
-VEC_PATH   = os.path.join("models", "tfidf_vectorizer.pkl")
-ENC_PATH   = os.path.join("models", "label_encoder.pkl")
+ROOT_DIR = Path(__file__).resolve().parents[1]
+MODEL_PATH = ROOT_DIR / "models" / "sentiment_model.pkl"
+VEC_PATH = ROOT_DIR / "models" / "tfidf_vectorizer.pkl"
+ENC_PATH = ROOT_DIR / "models" / "label_encoder.pkl"
 
 # Emoji map for terminal output
 EMOJI = {"positive": "😊", "negative": "😠", "neutral": "😐"}
